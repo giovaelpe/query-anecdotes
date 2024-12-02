@@ -9,3 +9,7 @@ export function getAnecdotes(){
 export function addAnecdote(newAnecdote) {
     return axios.post(endpoint, {content: newAnecdote, votes: 0}).then(response => response.data)
 }
+
+export function updateAnecdote(anecdote) {
+    return axios.put(`${endpoint}/${anecdote.id}`, {...anecdote, votes: anecdote.votes + 1})
+}
