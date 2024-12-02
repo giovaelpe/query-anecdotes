@@ -3,12 +3,13 @@ import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
 import axios from 'axios'
 import { AnecdotesList } from './components/Anecdoteslist'
+import { getAnecdotes } from './Services/Network'
 
 const App = () => {
 
   const query = useQuery({
     queryKey: ['Anecdotes'],
-    queryFn: () => axios.get('http://localhost:3001/anecdotes').then(response => response.data),
+    queryFn: getAnecdotes,
     retry: 1
   })
 
