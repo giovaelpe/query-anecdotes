@@ -7,7 +7,10 @@ export function getAnecdotes(){
 }
 
 export function addAnecdote(newAnecdote) {
-    return axios.post(endpoint, {content: newAnecdote, votes: 0}).then(response => response.data)
+    return axios.post(endpoint, {content: newAnecdote, votes: 0}).then(response => response.data).catch(error => {
+        console.log(error.message);
+        return error.message;
+    })
 }
 
 export function updateAnecdote(anecdote) {
