@@ -7,6 +7,9 @@ export function getAnecdotes(){
 }
 
 export function addAnecdote(newAnecdote) {
+    if(newAnecdote.length < 3){
+        throw new Error("Anecdote muss be ate least 3 characters long")
+    }
     return axios.post(endpoint, {content: newAnecdote, votes: 0}).then(response => response.data).catch(error => {
         console.log(error.message);
         return error.message;
